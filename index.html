@@ -11,27 +11,31 @@
     <div class="wrapper">
 			<div class="set">
     <div class="work-wrapper">
-			<button id="increase-work-btn"></button>
+			<a href="#" id="increase-work-btn" class="set-btn-container" >
+				<img src="img/up-arrows_icon.png" alt="" class="set-btn">
+			</a>
 			<div class="work-minutes-block digits" id="work-minutes">30</div>
-			<button id="decrease-work-btn"></button>
+			<a href="#" id="decrease-work-btn" class="set-btn-container" >
+				<img src="img/down-arrows_icon.png" alt="" class="set-btn">
 		</div>
 		<div class="break-wrapper">
 			<button id="increase-break-btn"></button>
-			<div class="break-minutes-block digits" id="break-minutes">05</div>
+			<div class="break-minutes-block digits" id="break-minutes">10</div>
 			<button id="decrease-break-btn"></button>
 		</div>
 	</div>
 <button id="start-button">Старт</button>
 <button id="stop-button">Стоп</button>
-
-<div id="timer" class="digits">
-	<div class="mins timer_digits" id="mins">00</div>
-	<div class="column">:</div>
-	<div class="secs timer_digits" id="secs">00</div>
 </div>
+<div class="pulse">
+	<div class="timer-wrapper">
+		<div id="timer" class="digits">
+			<div class="mins timer_digits" id="mins">00</div>
+			<div class="column">:</div>
+			<div class="secs timer_digits" id="secs">00</div>
+		</div>
+		</div>
 </div>
-<span class="pulse"></span>
-
 
 
     <script src="js/index.js"></script>

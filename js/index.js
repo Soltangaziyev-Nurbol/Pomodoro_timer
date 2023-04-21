@@ -53,30 +53,39 @@ function startBreakTimer() {
 }
 
 increaseWorkBtn.addEventListener("click", function () {
-  workMinutes++;
-  workMinutesInput.innerHTML = workMinutes;
-  if (workMinutes == 60) {
+	if (workMinutes >= 59) {
     increaseWorkBtn.classList.add("disabled");
-  }
+		workMinutes = 60;
+  } else  workMinutes++;
+  workMinutesInput.innerHTML = workMinutes;  
   trigger(decreaseWorkBtn);
 });
 
 decreaseWorkBtn.addEventListener("click", function () {
-  workMinutes--;
-  workMinutesInput.innerHTML = workMinutes;
-  if (workMinutes == 15) {
+	if (workMinutes <= 16) {
     decreaseWorkBtn.classList.add("disabled");
-  }
+		workMinutes = 15;
+  } else  workMinutes--;
+  workMinutesInput.innerHTML = workMinutes;
+  
   trigger(increaseWorkBtn);
 });
 
 increaseBreakBtn.addEventListener("click", function () {
   breakMinutes++;
   breakMinutesInput.innerHTML = addZero(breakMinutes);
+	if (breakMinutes == 15) {
+    increaseBreakBtn.classList.add("disabled");
+  }
+	trigger (decreaseBreakBtn);
 });
 decreaseBreakBtn.addEventListener("click", function () {
   breakMinutes--;
   breakMinutesInput.innerHTML = addZero(breakMinutes);
+	if (breakMinutes == 5) {
+    decreaseBreakBtn.classList.add("disabled");
+  }
+	trigger(increaseBreakBtn);
 });
 
 const trigger = function (a) {
