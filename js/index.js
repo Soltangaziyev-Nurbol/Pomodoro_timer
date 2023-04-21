@@ -7,9 +7,10 @@ let increaseWorkBtn = document.getElementById("increase-work-btn");
 let decreaseWorkBtn = document.getElementById("decrease-work-btn");
 let increaseBreakBtn = document.getElementById("increase-break-btn");
 let decreaseBreakBtn = document.getElementById("decrease-break-btn");
+let mins = document.getElementById("mins");
+let secs = document.getElementById("secs");
 
 let intervalId;
-let BreakIntervalId;
 let workMinutes = parseInt(workMinutesInput.innerHTML);
 let breakMinutes = parseInt(breakMinutesInput.innerHTML);
 
@@ -17,7 +18,8 @@ function startWorkTimer() {
   let seconds = 0;
   clearInterval(intervalId);
   intervalId = setInterval(function () {
-    timer.innerHTML = `Осталось ${addZero(workMinutes)}:${addZero(seconds)}`;
+    mins.innerHTML = `${addZero(workMinutes)}`
+		secs.innerHTML = `${addZero(seconds)}`;
     if (seconds == 0 && workMinutes > 0) {
       seconds = 59;
       workMinutes--;
@@ -33,14 +35,15 @@ function startWorkTimer() {
 
 function startBreakTimer() {
   let seconds = 0;
-  clearInterval(BreakIntervalId);
-  BreakIntervalId = setInterval(function () {
-    timer.innerHTML = `Осталось ${addZero(breakMinutes)}:${addZero(seconds)}`;
+  clearInterval(intervalId);
+  intervalId = setInterval(function () {
+    mins.innerHTML = `${addZero(breakMinutes)}`
+		secs.innerHTML = `${addZero(seconds)}`;
     if (seconds == 0 && breakMinutes > 0) {
       seconds = 59;
       breakMinutes--;
     } else if (seconds == 0 && breakMinutes == 0) {
-      clearInterval(BreakIntervalId);
+      clearInterval(intervalId);
 			breakMinutes = parseInt(breakMinutesInput.innerHTML);
       startWorkTimer();
     } else {

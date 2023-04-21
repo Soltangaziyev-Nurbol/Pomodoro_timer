@@ -1,8 +1,39 @@
+@font-face {
+	font-family: 'digits';
+	src: url(../Fonts/Digit.ttf);
+}
+
 * {
   margin: 0 auto;
 	box-sizing: border-box;
   outline: none;
   user-select: none;
+	text-align: center;
+}
+
+.column {
+	display: flex;
+	justify-content: center;
+}
+
+
+
+#timer {
+	font-size: 100px !important;
+	display: flex;
+	width: 400px;
+	text-align: center;
+}
+
+.timer_digits {
+	width: 150px !important;
+}
+
+.digits {
+	font-family: digits;
+	font-size: 30px;
+	font-weight: normal;
+
 }
 
 .disabled {
