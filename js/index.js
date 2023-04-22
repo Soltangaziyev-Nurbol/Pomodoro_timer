@@ -2,19 +2,22 @@ let workMinutesInput = document.getElementById("work-minutes");
 let breakMinutesInput = document.getElementById("break-minutes");
 let timer = document.getElementById("timer");
 let startButton = document.getElementById("start-button");
-let stopButton = document.getElementById("stop-button");
+let stopWorkButton = document.getElementById("stop-button--work");
+let stopBreakButton = document.getElementById("stop-button--break");
 let increaseWorkBtn = document.getElementById("increase-work-btn");
 let decreaseWorkBtn = document.getElementById("decrease-work-btn");
 let increaseBreakBtn = document.getElementById("increase-break-btn");
 let decreaseBreakBtn = document.getElementById("decrease-break-btn");
 let mins = document.getElementById("mins");
 let secs = document.getElementById("secs");
-
+let work = true;
 let intervalId;
 let workMinutes = parseInt(workMinutesInput.innerHTML);
 let breakMinutes = parseInt(breakMinutesInput.innerHTML);
 
 function startWorkTimer() {
+	stopBreakButton.classList.add("disabled");
+	stopWorkButton.classList.remove("disabled");
   let seconds = 0;
   clearInterval(intervalId);
   intervalId = setInterval(function () {
@@ -34,27 +37,29 @@ function startWorkTimer() {
 }
 
 function startBreakTimer() {
-  let seconds = 0;
+	stopWorkButton.classList.add("disabled");
+	stopBreakButton.classList.remove("disabled");
+  let breakeSeconds = 0;
   clearInterval(intervalId);
   intervalId = setInterval(function () {
     mins.innerHTML = `${addZero(breakMinutes)}`
-		secs.innerHTML = `${addZero(seconds)}`;
-    if (seconds == 0 && breakMinutes > 0) {
-      seconds = 59;
+		secs.innerHTML = `${addZero(breakeSeconds)}`;
+    if (breakeSeconds == 0 && breakMinutes > 0) {
+      breakeSeconds = 59;
       breakMinutes--;
-    } else if (seconds == 0 && breakMinutes == 0) {
+    } else if (breakeSeconds == 0 && breakMinutes == 0) {
       clearInterval(intervalId);
 			breakMinutes = parseInt(breakMinutesInput.innerHTML);
       startWorkTimer();
     } else {
-      seconds--;
+      breakeSeconds--;
     }
   }, 1);
 }
 
 increaseWorkBtn.addEventListener("click", function () {
 	if (workMinutes >= 59) {
-    increaseWorkBtn.classList.add("disabled");
+    increaseWorkBtn.classList.add("vanished");
 		workMinutes = 60;
   } else  workMinutes++;
   workMinutesInput.innerHTML = workMinutes;  
@@ -63,7 +68,7 @@ increaseWorkBtn.addEventListener("click", function () {
 
 decreaseWorkBtn.addEventListener("click", function () {
 	if (workMinutes <= 16) {
-    decreaseWorkBtn.classList.add("disabled");
+    decreaseWorkBtn.classList.add("vanished");
 		workMinutes = 15;
   } else  workMinutes--;
   workMinutesInput.innerHTML = workMinutes;
@@ -73,7 +78,7 @@ decreaseWorkBtn.addEventListener("click", function () {
 
 increaseBreakBtn.addEventListener("click", function () {
 	if (breakMinutes >= 14) {
-    increaseBreakBtn.classList.add("disabled");
+    increaseBreakBtn.classList.add("vanished");
 		breakMinutes = 15;
   } else  breakMinutes++;
   breakMinutesInput.innerHTML = addZero(breakMinutes);
@@ -82,7 +87,7 @@ increaseBreakBtn.addEventListener("click", function () {
 });
 decreaseBreakBtn.addEventListener("click", function () {
 	if (breakMinutes <= 6) {
-    decreaseBreakBtn.classList.add("disabled");
+    decreaseBreakBtn.classList.add("vanished");
 		breakMinutes = 5;
   } else  breakMinutes--;
   breakMinutesInput.innerHTML = addZero(breakMinutes);
@@ -91,7 +96,7 @@ decreaseBreakBtn.addEventListener("click", function () {
 });
 
 const trigger = function (a) {
-  a.classList.remove("disabled");
+  a.classList.remove("vanished");
 };
 
 const addZero = function (a) {
@@ -104,7 +109,15 @@ const addZero = function (a) {
 };
 
 
-startButton.addEventListener("click", startWorkTimer);
-stopButton.addEventListener("click", function () {
+startButton.addEventListener("click", function() {
+	if (work === true) {
+		startWorkTimer();
+	} else startBreakTimer()});
+stopWorkButton.addEventListener("click", function () {
+	work = true;
+  clearInterval(intervalId);
+});
+stopBreakButton.addEventListener("click", function () {
+	work = false;
   clearInterval(intervalId);
 });

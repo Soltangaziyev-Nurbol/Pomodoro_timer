@@ -14,7 +14,7 @@
 			<a href="#" id="increase-work-btn" class="set-btn-container" >
 				<img src="img/up-arrows_icon.png" alt="" class="set-btn">
 			</a>
-			<div class="work-minutes-block digits" id="work-minutes">30</div>
+			<div class="work-minutes-block digits set_dig" id="work-minutes">30</div>
 			<a href="#" id="decrease-work-btn" class="set-btn-container" >
 				<img src="img/down-arrows_icon.png" alt="" class="set-btn">
 			</a>
@@ -23,16 +23,19 @@
 			<a href="#" id="increase-break-btn" class="set-btn-container" >
 				<img src="img/up-arrows_icon.png" alt="" class="set-btn">
 			</a>
-			<div class="break-minutes-block digits" id="break-minutes">10</div>
+			<div class="break-minutes-block digits set_dig" id="break-minutes">10</div>
 			<a href="#" id="decrease-break-btn" class="set-btn-container" >
 				<img src="img/down-arrows_icon.png" alt="" class="set-btn">
 			</a>
 		</div>
 	</div>
-<button id="start-button">Старт</button>
-<button id="stop-button">Стоп</button>
+	<a href="#" id="start-button" class="main-buttons"><img src="../Timer/img/play.png" alt="" class="main-icon"> Start</a>
+	<a href="#" id="stop-button--work" class="main-buttons"><img src="../Timer/img/pause.png" alt="" class="main-icon">Pause</a>
+	<a href="#" id="stop-button--break" class="main-buttons disabled"><img src="../Timer/img/pause.png" alt="" class="main-icon">Pause</a>
+<button id="stop-button--work">Стоп</button>
 </div>
 <div class="pulse">
+	<div class="timer-text" id="timer-text">Ready?</div>
 	<div class="timer-wrapper">
 		<div id="timer" class="digits">
 			<div class="mins timer_digits" id="mins">00</div>

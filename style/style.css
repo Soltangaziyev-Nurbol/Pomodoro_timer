@@ -9,6 +9,7 @@
   outline: none;
   user-select: none;
 	text-align: center;
+	text-decoration: none;
 }
 
 body {
@@ -20,7 +21,7 @@ body {
   position: relative;
   width: 550px;
   height: 550px;
-  margin: 0 auto;
+  margin: 50px auto;
 }
 
 
@@ -46,16 +47,18 @@ body {
 	font-family: digits;
 	font-size: 30px;
 	font-weight: normal;
-
+	padding: 10px 15px;	
+	background: #58ee33;	
 }
 
-.disabled {
-	opacity: 0;
-  transition: opacity 1s ease-out;
+.set_dig{
+	width: 60px !important;
+	border-radius: 5px;
+	box-shadow: -10px 10px 20px rgba(70, 248, 54, 0.8);
 }
 
 .set {
-	width: 300px;
+	width: 200px;
 	display: flex;
 	justify-content: space space-between;
 }
@@ -67,7 +70,7 @@ body {
   border-radius: 50%;
   background: #58ee33;
   cursor: pointer;
-  box-shadow: 0 0 150px 150px rgba(70, 248, 54, 0.5);
+  box-shadow: 0 0 50px 50px rgba(70, 248, 54, 0.5);
   animation: pulse 2s infinite;
 	position: absolute;
   top: 45%;
@@ -128,4 +131,33 @@ body {
 }
 .set-btn-container{
 	height: 30px;
+}
+.timer-text{
+	font-weight: normal;
+	font-size: 50px;
+	margin-top: 20%;
+	text-align: center;
+
+}
+
+.main-icon{
+	width: 30px;
+	height: 30px;
+}
+.main-buttons{
+	width: 100px;
+	font-size: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	color: #000;
+}
+
+.disabled{
+	display: none;
+}
+
+.vanished {
+	opacity: 0;
+  transition: opacity 0.5s ease-out;
 }
