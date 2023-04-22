@@ -72,19 +72,21 @@ decreaseWorkBtn.addEventListener("click", function () {
 });
 
 increaseBreakBtn.addEventListener("click", function () {
-  breakMinutes++;
-  breakMinutesInput.innerHTML = addZero(breakMinutes);
-	if (breakMinutes == 15) {
+	if (breakMinutes >= 14) {
     increaseBreakBtn.classList.add("disabled");
-  }
+		breakMinutes = 15;
+  } else  breakMinutes++;
+  breakMinutesInput.innerHTML = addZero(breakMinutes);
+	
 	trigger (decreaseBreakBtn);
 });
 decreaseBreakBtn.addEventListener("click", function () {
-  breakMinutes--;
-  breakMinutesInput.innerHTML = addZero(breakMinutes);
-	if (breakMinutes == 5) {
+	if (breakMinutes <= 6) {
     decreaseBreakBtn.classList.add("disabled");
-  }
+		breakMinutes = 5;
+  } else  breakMinutes--;
+  breakMinutesInput.innerHTML = addZero(breakMinutes);
+	
 	trigger(increaseBreakBtn);
 });
 
