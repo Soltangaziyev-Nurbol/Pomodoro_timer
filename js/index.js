@@ -4,6 +4,7 @@ let timer = document.getElementById("timer");
 let startButton = document.getElementById("start-button");
 let stopWorkButton = document.getElementById("stop-button--work");
 let stopBreakButton = document.getElementById("stop-button--break");
+let resetButton = document.getElementById("reset-button");
 let increaseWorkBtn = document.getElementById("increase-work-btn");
 let decreaseWorkBtn = document.getElementById("decrease-work-btn");
 let increaseBreakBtn = document.getElementById("increase-break-btn");
@@ -42,7 +43,7 @@ function startBreakTimer() {
   let breakeSeconds = 0;
   clearInterval(intervalId);
   intervalId = setInterval(function () {
-    mins.innerHTML = `${addZero(breakMinutes)}`
+    mins.innerHTML = `${addZero(breakMinutes)}`;
 		secs.innerHTML = `${addZero(breakeSeconds)}`;
     if (breakeSeconds == 0 && breakMinutes > 0) {
       breakeSeconds = 59;
@@ -108,16 +109,34 @@ const addZero = function (a) {
   }
 };
 
+resetButton.addEventListener("click", function () {
+	workMinutes = parseInt(workMinutesInput.innerHTML);	
+	mins.innerHTML = `${addZero(workMinutes)}`;
+	secs.innerHTML = `00`;
+	work = true;
+});
+
 
 startButton.addEventListener("click", function() {
 	if (work === true) {
 		startWorkTimer();
-	} else startBreakTimer()});
+	} else startBreakTimer()
+	startButton.classList.add("disabled");
+	resetButton.classList.add("disabled");
+});
+
 stopWorkButton.addEventListener("click", function () {
 	work = true;
   clearInterval(intervalId);
+	startButton.classList.remove("disabled");
+	stopWorkButton.classList.add("disabled");
+	resetButton.classList.remove("disabled");
 });
+
 stopBreakButton.addEventListener("click", function () {
 	work = false;
   clearInterval(intervalId);
+	startButton.classList.remove("disabled");
+	stopBreakButton.classList.add("disabled");
+	resetButton.classList.remove("disabled");
 });
