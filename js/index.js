@@ -64,6 +64,7 @@ increaseWorkBtn.addEventListener("click", function () {
 		workMinutes = 60;
   } else  workMinutes++;
   workMinutesInput.innerHTML = workMinutes;  
+	changeNum();
   trigger(decreaseWorkBtn);
 });
 
@@ -73,7 +74,7 @@ decreaseWorkBtn.addEventListener("click", function () {
 		workMinutes = 15;
   } else  workMinutes--;
   workMinutesInput.innerHTML = workMinutes;
-  
+	changeNum();  
   trigger(increaseWorkBtn);
 });
 
@@ -107,6 +108,10 @@ const addZero = function (a) {
   } else {
     return a;
   }
+};
+
+const changeNum = function () {
+	mins.innerHTML=`${addZero(workMinutes)}`;
 };
 
 resetButton.addEventListener("click", function () {
