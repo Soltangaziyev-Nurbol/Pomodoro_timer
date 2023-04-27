@@ -11,14 +11,21 @@ let increaseBreakBtn = document.getElementById("increase-break-btn");
 let decreaseBreakBtn = document.getElementById("decrease-break-btn");
 let mins = document.getElementById("mins");
 let secs = document.getElementById("secs");
+let timerText = document.getElementById("timer-text");
 let work = true;
 let intervalId;
 let workMinutes = parseInt(workMinutesInput.innerHTML);
 let breakMinutes = parseInt(breakMinutesInput.innerHTML);
+let tabBtn = document.querySelectorAll(".item");
+let tabText = document.querySelectorAll(".content-item");
+
+
+
 
 function startWorkTimer() {
 	stopBreakButton.classList.add("disabled");
 	stopWorkButton.classList.remove("disabled");
+	timerText.innerHTML = "Concentrate on work";
   let seconds = 0;
   clearInterval(intervalId);
   intervalId = setInterval(function () {
@@ -40,6 +47,7 @@ function startWorkTimer() {
 function startBreakTimer() {
 	stopWorkButton.classList.add("disabled");
 	stopBreakButton.classList.remove("disabled");
+	timerText.innerHTML = "Take a break";
   let breakeSeconds = 0;
   clearInterval(intervalId);
   intervalId = setInterval(function () {
@@ -119,6 +127,7 @@ resetButton.addEventListener("click", function () {
 	mins.innerHTML = `${addZero(workMinutes)}`;
 	secs.innerHTML = `00`;
 	work = true;
+	timerText.innerHTML = "Ready?";
 });
 
 
@@ -144,4 +153,16 @@ stopBreakButton.addEventListener("click", function () {
 	startButton.classList.remove("disabled");
 	stopBreakButton.classList.add("disabled");
 	resetButton.classList.remove("disabled");
+});
+
+// Tabs code
+
+tabBtn.forEach(function (tab) {
+  tab.addEventListener("click", function () {
+    let activeTab = tab;    
+    tabBtn.forEach(function (tab) {
+      tab.classList.remove("active");      
+    });   
+    activeTab.classList.add("active");    
+  });  
 });

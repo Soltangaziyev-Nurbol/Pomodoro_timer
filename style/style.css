@@ -138,7 +138,7 @@ body {
 	font-size: 50px;
 	margin-top: 20%;
 	text-align: center;
-
+	transition: all 1s ease;
 }
 
 .main-icon{
@@ -172,4 +172,58 @@ body {
 	width: 100%;
 	height: 30px;
 	margin-top: 50px;
+}
+/* Tabs design */
+
+.tabs {
+  display: flex;
+}
+
+.item {
+  width: 33.333%;
+  padding: 15px 0;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 32px;
+  line-height: 24px;
+  padding: 15px;
+  border: 3px solid #f7e9b3;
+  border-radius: 20px 20px 0 0;
+}
+
+.item:hover {
+  border: 2px solid #f7e9b3;
+  border-radius: 20px 20px 0 0;
+  
+}
+
+.item:hover:nth-child(1) {
+  background-color: #58ee33;
+  
+}
+
+.item:hover:nth-child(2) {
+  background-color: rgba(57, 59, 6, 0.933);  
+}
+
+.item:hover:nth-child(3) {
+  background-color: #d9901c;  
+}
+
+.item.active {
+  border: 2px solid #f7e9b3;  
+  border-bottom: none;
+  border-radius: 20px 20px 0 0;  
+}
+
+.item.active:nth-child(1) {
+  background-color: #58ee3370;  
+  
+}
+
+.item.active:nth-child(2) {
+  background-color: rgba(57, 59, 6, 0.933);
+}
+
+.item.active:nth-child(3) {
+  background-color: #d9901c;
 }
