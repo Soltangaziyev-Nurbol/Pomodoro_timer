@@ -22,6 +22,7 @@ let greenTab = document.querySelectorAll(".green__tab");
 let purpleTab = document.querySelectorAll(".purple__tab");
 let blueTab = document.querySelectorAll(".blue__tab");
 let body = document.getElementById("body");
+let pulse = document.getElementById("pulse");
 
 
 
@@ -167,7 +168,9 @@ tabBtn.forEach(function (tab) {
     tabBtn.forEach(function (tab) {
       tab.classList.remove("active"); 
 			body.classList.remove("purple"); 
-			body.classList.remove("blue");	    
+			body.classList.remove("blue");
+			workMinutesInput.classList.remove("purple");
+			breakMinutesInput.classList.remove("purple");
     });   
     activeTab.classList.add("active");
   });  
@@ -175,6 +178,11 @@ tabBtn.forEach(function (tab) {
 
 purpleTab[0].addEventListener("click", function(){
 	body.classList.add("purple");
+	workMinutesInput.classList.add("purple");
+	breakMinutesInput.classList.add("purple");
+	pulse.classList.add("purple");
+	timer.classList.add("purple");
+	pulse.classList.add("pulse--purple");
 });
 
 blueTab[0].addEventListener("click", function(){
