@@ -18,6 +18,10 @@ let workMinutes = parseInt(workMinutesInput.innerHTML);
 let breakMinutes = parseInt(breakMinutesInput.innerHTML);
 let tabBtn = document.querySelectorAll(".item");
 let tabText = document.querySelectorAll(".content-item");
+let greenTab = document.querySelectorAll(".green__tab");
+let purpleTab = document.querySelectorAll(".purple__tab");
+let blueTab = document.querySelectorAll(".blue__tab");
+let body = document.getElementById("body");
 
 
 
@@ -161,8 +165,18 @@ tabBtn.forEach(function (tab) {
   tab.addEventListener("click", function () {
     let activeTab = tab;    
     tabBtn.forEach(function (tab) {
-      tab.classList.remove("active");      
+      tab.classList.remove("active"); 
+			body.classList.remove("purple"); 
+			body.classList.remove("blue");	    
     });   
-    activeTab.classList.add("active");    
+    activeTab.classList.add("active");
   });  
+});
+
+purpleTab[0].addEventListener("click", function(){
+	body.classList.add("purple");
+});
+
+blueTab[0].addEventListener("click", function(){
+  body.classList.add("blue");
 });
