@@ -9,6 +9,7 @@ let increaseWorkBtn = document.getElementById("increase-work-btn");
 let decreaseWorkBtn = document.getElementById("decrease-work-btn");
 let increaseBreakBtn = document.getElementById("increase-break-btn");
 let decreaseBreakBtn = document.getElementById("decrease-break-btn");
+let set = document.getElementById("set");
 let mins = document.getElementById("mins");
 let secs = document.getElementById("secs");
 let timerText = document.getElementById("timer-text");
@@ -137,6 +138,7 @@ resetButton.addEventListener("click", function () {
 
 
 startButton.addEventListener("click", function() {
+	set.classList.add("vanished");
 	if (work === true) {
 		startWorkTimer();
 	} else startBreakTimer()
@@ -145,6 +147,7 @@ startButton.addEventListener("click", function() {
 });
 
 stopWorkButton.addEventListener("click", function () {
+	set.classList.remove("vanished");
 	work = true;
   clearInterval(intervalId);
 	startButton.classList.remove("disabled");
@@ -153,12 +156,14 @@ stopWorkButton.addEventListener("click", function () {
 });
 
 stopBreakButton.addEventListener("click", function () {
+	set.classList.remove("vanished");
 	work = false;
   clearInterval(intervalId);
 	startButton.classList.remove("disabled");
 	stopBreakButton.classList.add("disabled");
 	resetButton.classList.remove("disabled");
 });
+
 
 // Tabs code
 
@@ -171,7 +176,13 @@ tabBtn.forEach(function (tab) {
 			body.classList.remove("blue");
 			workMinutesInput.classList.remove("purple");
 			breakMinutesInput.classList.remove("purple");
-    });   
+			timer.classList.remove("purple");
+			pulse.classList.remove("purple");
+			workMinutesInput.classList.remove("blue");
+			breakMinutesInput.classList.remove("blue");
+			timer.classList.remove("blue");
+			pulse.classList.remove("blue");
+		});   
     activeTab.classList.add("active");
   });  
 });
@@ -182,9 +193,12 @@ purpleTab[0].addEventListener("click", function(){
 	breakMinutesInput.classList.add("purple");
 	pulse.classList.add("purple");
 	timer.classList.add("purple");
-	pulse.classList.add("pulse--purple");
 });
 
 blueTab[0].addEventListener("click", function(){
   body.classList.add("blue");
+	workMinutesInput.classList.add("blue");
+	breakMinutesInput.classList.add("blue");
+	pulse.classList.add("blue");
+	timer.classList.add("blue");
 });
