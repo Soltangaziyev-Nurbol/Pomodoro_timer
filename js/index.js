@@ -47,7 +47,7 @@ function startWorkTimer() {
     } else {
       seconds--;
     }
-  }, 1);
+  }, 1000);
 }
 
 function startBreakTimer() {
@@ -69,7 +69,7 @@ function startBreakTimer() {
     } else {
       breakeSeconds--;
     }
-  }, 1);
+  }, 1000);
 }
 
 increaseWorkBtn.addEventListener("click", function () {
